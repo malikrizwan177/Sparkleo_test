@@ -1,6 +1,8 @@
+import { useState } from "react"
 import { assets } from "../assets"
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState<Boolean>(false)
   return (
     <section className="h-lvh w-full">
         <div className="flex flex-row justify-center h-full mx-auto">
@@ -15,13 +17,16 @@ const Login = () => {
                     <div className="w-full flex items-center gap-3 text-secondary mt-2"><hr className="w-full"/><p>or</p><hr className="w-full"/></div>
                     <form>
                         <label htmlFor="email" className="text-tertiary flex mt-3 font-medium">Email<p className="text-primary">*</p></label>
-                        <input type="email" name="email" id="email" placeholder="mail@simple.com" className="text-secondary rounded-2xl outline-none border border-gray-300 py-4 px-6 w-full mt-2" required/>
+                        <input type="email" name="email" id="email" placeholder="mail@simple.com" className="text-secondary rounded-2xl outline-none border border-gray-300 py-3 px-6 w-full mt-2" required/>
                         <label htmlFor="password" className="text-tertiary flex mt-6 font-medium">Password<p className="text-primary">*</p></label>
-                        <input type="password" name="password" id="password" placeholder="Min. 8 characters" className="text-secondary rounded-2xl outline-none border border-gray-300 py-4 px-6 w-full mt-2" required/>
+                        <div className="relative">
+                            <input type={`${showPassword ? 'text' : 'password'}`} name="password" id="password" placeholder="Min. 8 characters" className="text-secondary rounded-2xl outline-none border border-gray-300 py-3 px-6 w-full mt-2" required/>
+                            <img src={assets.password_eye} alt="password_eye" className="absolute right-5 top-1/2 -mt-1 w-5 h-5 cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                        </div>
                         <div className="flex justify-between mt-8">
                             <div className="flex gap-2 items-center">
                                 <input type="checkbox" name="checkbox" id="checkbox" className="w-5 h-5 accent-primary"/>
-                                <p className="text-sm">Keep me logged in</p>
+                                <p className="text-sm text-tertiary">Keep me logged in</p>
                             </div>
                         <p className="text-primary font-medium text-sm cursor-pointer">Forgot password?</p>
                         </div>
@@ -33,11 +38,17 @@ const Login = () => {
                     <p className="text-secondary text-center font-medium text-sm">© 2023 Spark Drive. All Rights Reserved. </p>
                 </div>
             </div>
-            <div className="text-center text-white bg-primary mx-auto hidden md:flex flex-col justify-center items-center gap-y-20 w-full px-8 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] py-5">
-                <img src={assets.logo} alt="logo" />
-                <div className="border-2 border-white/20 py-5 md:px-10 lg:px-16 xl:px-20 rounded-3xl">
-                    <p className="text-lg font-light">Learn more about Air Drive on</p>
-                    <p className="font-semibold text-3xl">Spark.pl</p>
+            <div className="text-center text-white rounded-bl-[150px] bg-primary mx-auto hidden md:flex flex-col justify-between items-center gap-y-20 w-full px-8 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] py-5">
+                <div className="opacity-0">Hidden</div>
+                <div>
+                    <img src={assets.logo} alt="logo" />
+                    <div className="border-2 border-white/20 py-5 md:px-10 lg:px-16 xl:px-20 rounded-3xl mt-20">
+                        <p className="text-lg font-light">Learn more about Air Drive on</p>
+                        <p className="font-semibold text-3xl">Spark.pl</p>
+                    </div>
+                </div>
+                <div className="flex gap-5 text-white font-light text-sm">
+                    <a href="">License</a><a href="">Terms of Use</a><a href="">Blog</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,7 @@
 import logo from "./logo.png"
+import password_eye from "./password_eye.png"
 
 export const assets = {
-    logo
+    logo,
+    password_eye
 }
