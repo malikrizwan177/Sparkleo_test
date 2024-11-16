@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-import { db } from '../dbConnection';
+import { db } from '../dbConnection.js';
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     // Query user by email
     const query = 'SELECT * FROM users WHERE email = ?';
-    db.query(query, [email], async (err, results) => {
+    db.query(query, [email], (err, results) => {
         if (err) {
             return res.status(500).json({ message: 'Database error', error: err });
         }
@@ -27,7 +27,7 @@ const loginUser = async (req, res) => {
         // Generate JWT
         const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        await res.json({ token });
+         res.json({ token });
     });
 }
 

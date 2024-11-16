@@ -1,10 +1,12 @@
+//Video is available in the video folder
+
 import express from 'express'
 // import cors from 'cors'
 import 'dotenv/config'
 import bodyParser from 'body-parser'
-import { loginUser, protectedRoute } from './controllers/userController'
-import verifyJWT from './middleware/jwtToken'
-import { db } from './dbConnection'
+import { loginUser, protectedRoute } from './controllers/userController.js'
+import verifyJWT from './middleware/jwtToken.js'
+import { db } from './dbConnection.js'
 
 // Initialize express server
 const app = express();
@@ -28,6 +30,6 @@ db.connect(err => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Server is running on http://localhost:${process.env.PORT}`);
 });
