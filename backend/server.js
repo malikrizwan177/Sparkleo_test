@@ -1,7 +1,7 @@
 //Video is available in the video folder
 
 import express from 'express'
-// import cors from 'cors'
+import cors from 'cors'
 import 'dotenv/config'
 import bodyParser from 'body-parser'
 import { loginUser, protectedRoute } from './controllers/userController.js'
@@ -10,6 +10,8 @@ import { db } from './dbConnection.js'
 
 // Initialize express server
 const app = express();
+
+app.use(cors)
 
 // Middleware to parse JSON
 app.use(bodyParser.json());
