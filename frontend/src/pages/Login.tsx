@@ -9,7 +9,7 @@ const Login = () => {
   const [error, setError] = useState<String | null>(null);
   const [token, setToken] = useState<String | null>(null);
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     setError(null);
 
@@ -45,8 +45,8 @@ const Login = () => {
               <p>or</p>
               <hr className="w-full" />
             </div>
-            {error && <p className="text-red-500 my-4">{error}</p>}
-            {token && <p className="text-green-500 my-4">Token: {token}</p>}
+            {error && <p className="text-red-500 my-4 max-w-[410px]">{error}</p>}
+            {token && <p className="text-green-500 my-4 max-w-[410px]">Token: {token}</p>}
             <form onSubmit={handleSubmit}>
               <label
                 htmlFor="email"

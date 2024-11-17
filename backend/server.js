@@ -11,7 +11,7 @@ import { db } from './dbConnection.js'
 // Initialize express server
 const app = express();
 
-app.use(cors)
+app.use(cors())
 
 // Middleware to parse JSON
 app.use(bodyParser.json());
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.post('/api/login', loginUser);
 
 // Protected route
-app.get('api/protected', verifyJWT, protectedRoute);
+app.get('/api/protected', verifyJWT, protectedRoute);
 
 // Connect to MySQL
 db.connect(err => {
